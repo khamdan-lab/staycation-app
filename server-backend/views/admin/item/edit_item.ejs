@@ -1,0 +1,43 @@
+<div class="tab-pane fade show active" id="edit-item" role="tabpanel" aria-labelledby="home-tab">
+    <div class="card shadow mb-4 mt-2">
+        <div class="card-body">
+            <form action="/admin/item/<%= item.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="">Title</label>
+                    <input type="text" name="title" class="form-control" placeholder="Enter title" value="<%= item.title %>" required>
+                </div> 
+                <div class="form-group">
+                    <label for="">Price</label>
+                    <input type="number" name="price" class="form-control" placeholder="Enter price" value="<%= item.price %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="">Country</label>
+                    <input type="text" name="country" class="form-control" placeholder="Enter country" value="<%= item.country %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="">City</label>
+                    <input type="text" name="city" class="form-control" placeholder="Enter city" value="<%= item.city %>" required>
+                </div> 
+                <div class="form-group">
+                    <label for="">Category</label>
+                    <select name="categoryId" class="form-control">
+                        <option value="<%= item.categoryId._id %>" style="display: none;"><%= item.categoryId.name %></option>
+                        <% for(let i = 0; i < category.length; i++) { %>
+                            <option value="<%= category[i].id %>"><%= category[i].name %></option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Image</label>
+                    <input type="file" name="image" class="form-control" multiple>
+                </div>
+                <div class="form-group">
+                    <label for="">Description</label>
+                    <textarea id="description" name="description" cols="30" rows="10" class="form-control"><%= item.description %></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="/admin/item" class="btn btn-warning">Back</a>
+            </form>
+        </div>
+    </div>
+</div>
