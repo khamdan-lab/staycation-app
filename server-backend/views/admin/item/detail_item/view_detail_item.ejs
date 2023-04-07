@@ -79,11 +79,22 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
+    <%- include('show_modal_activity') %>
     <%- include('show_modal_feature') %>
     <%- include('../../../partials/js.ejs') %>
     <script>
         $(document).ready(function() {
             $('#dataTableActivity').DataTable();
+        });
+
+        $('#dataTableActivity').on('click','.button-update', function () {
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+            var type = $(this).data('type');
+            $('#edit-modal').modal('show');
+            $('.id').val(id);
+            $('.name').val(name);
+            $('.type').val(type);
         });
 
         $('#dataTable').on('click','.button-update', function () {
